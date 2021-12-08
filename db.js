@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
-const mongoURI = "mongodb://localhost:27017/my-notebook?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
-
+const mongoURI = process.env.MONGO_CONNECT_URL
 const connectToMongo = ()=>{
     mongoose.connect(mongoURI,()=>{
-        console.log("connected to Mongo!")
-    })
+        console.log("connected to MongoDB Atlas!")
+    }).catch((error)=>{console.log("error Cccures !",error)})
 }
 module.exports = connectToMongo;
